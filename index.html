@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kimia Interaktif - SMA Kelas 10 Semester 2</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-atom"></i>
+                <span>Kimia Interaktif</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#beranda" class="nav-link">Beranda</a></li>
+                <li class="dropdown">
+                    <a href="#" class="nav-link">Materi <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#bab1">Bab 1: Struktur Atom</a></li>
+                        <li><a href="#bab2">Bab 2: Ikatan Kimia</a></li>
+                        <li><a href="#bab3">Bab 3: Bentuk Molekul</a></li>
+                        <li><a href="#bab4">Bab 4: Larutan Elektrolit</a></li>
+                        <li><a href="#bab5">Bab 5: Reaksi Redoks</a></li>
+                        <li><a href="#bab6">Bab 6: Stoikiometri</a></li>
+                    </ul>
+                </li>
+                <li><a href="#simulasi" class="nav-link">Simulasi</a></li>
+                <li><a href="#quiz" class="nav-link">Quiz</a></li>
+                <li><a href="#kalkulator" class="nav-link">Kalkulator</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="hero">
+        <div class="hero-content">
+            <h1>Selamat Datang di Kimia Interaktif</h1>
+            <p>Jelajahi dunia atom, ikatan kimia, dan reaksi dengan cara yang menyenangkan!</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">6</span>
+                    <span class="stat-label">Bab Materi</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Soal Latihan</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">10+</span>
+                    <span class="stat-label">Simulasi</span>
+                </div>
+            </div>
+            <button class="cta-button" onclick="scrollToContent()">
+                <i class="fas fa-play"></i> Mulai Belajar
+            </button>
+        </div>
+        <div class="hero-animation">
+            <div class="molecule">
+                <div class="atom atom-c"></div>
+                <div class="atom atom-h atom-h1"></div>
+                <div class="atom atom-h atom-h2"></div>
+                <div class="atom atom-h atom-h3"></div>
+                <div class="atom atom-h atom-h4"></div>
+                <div class="bond bond1"></div>
+                <div class="bond bond2"></div>
+                <div class="bond bond3"></div>
+                <div class="bond bond4"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <h3>Navigasi Cepat</h3>
+                <ul class="chapter-list">
+                    <li class="chapter-item" data-chapter="bab1">
+                        <i class="fas fa-atom"></i>
+                        <span>Struktur Atom & SPU</span>
+                        <div class="progress-circle">
+                            <span>0%</span>
+                        </div>
+                    </li>
+                    <li class="chapter-item" data-chapter="bab2">
+                        <i class="fas fa-link"></i>
+                        <span>Ikatan Kimia</span>
+                        <div class="progress-circle">
+                            <span>0%</span>
+                        </div>
+                    </li>
+                    <li class="chapter-item" data-chapter="bab3">
+                        <i class="fas fa-cubes"></i>
+                        <span>Bentuk Molekul</span>
+                        <div class="progress-circle">
+                            <span>0%</span>
+                        </div>
+                    </li>
+                    <li class="chapter-item" data-chapter="bab4">
+                        <i class="fas fa-bolt"></i>
+                        <span>Larutan Elektrolit</span>
+                        <div class="progress-circle">
+                            <span>0%</span>
+                        </div>
+                    </li>
+                    <li class="chapter-item" data-chapter="bab5">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>Reaksi Redoks</span>
+                        <div class="progress-circle">
+                            <span>0%</span>
+                        </div>
+                    </li>
+                    <li class="chapter-item" data-chapter="bab6">
+                        <i class="fas fa-calculator"></i>
+                        <span>Stoikiometri</span>
+                        <div class="progress-circle">
+                            <span>0%</span>
+                        </div>
+                    </li>
+                </ul>
+                
+                <div class="study-tools">
+                    <h4>Tools Pembelajaran</h4>
+                    <button class="tool-btn" onclick="openNotesModal()">
+                        <i class="fas fa-sticky-note"></i> Catatan
+                    </button>
+                    <button class="tool-btn" onclick="openBookmarksModal()">
+                        <i class="fas fa-bookmark"></i> Bookmark
+                    </button>
+                    <button class="tool-btn" onclick="toggleDarkMode()">
+                        <i class="fas fa-moon"></i> Mode Gelap
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Chapter 1: Struktur Atom -->
+            <section id="bab1" class="chapter">
+                <div class="chapter-header">
+                    <h1><i class="fas fa-atom"></i> Bab 1: Mengintip Dunia Atom dan Keteraturan Unsur</h1>
+                    <div class="chapter-progress">
+                        <div class="progress-track">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <span class="progress-text">0% Selesai</span>
+                    </div>
+                </div>
+
+                <div class="chapter-intro">
+                    <p>Pada bab ini, kita akan memperkuat pemahaman mengenai konsep dasar atom dan bagaimana unsur-unsur dikelompokkan serta menunjukkan keteraturan sifat dalam Sistem Periodik Unsur.</p>
+                </div>
+
+                <!-- Learning Objectives -->
+                <div class="learning-objectives">
+                    <h3><i class="fas fa-target"></i> Tujuan Pembelajaran</h3>
+                    <ul>
+                        <li>Menjelaskan perkembangan model atom dari Dalton hingga mekanika kuantum</li>
+                        <li>Menentukan partikel dasar penyusun atom</li>
+                        <li>Menuliskan konfigurasi elektron dan menentukan elektron valensi</li>
+                        <li>Menganalisis tren sifat keperiodikan unsur</li>
+                    </ul>
+                </div>
+
+                <!-- Interactive Model Atom -->
+                <div class="interactive-section">
+                    <h3><i class="fas fa-play-circle"></i> Model Atom Interaktif</h3>
+                    <div class="atom-model-container">
+                        <div class="atom-selector">
+                            <label for="element-select">Pilih Unsur:</label>
+                            <select id="element-select" onchange="updateAtomModel()">
+                                <option value="H">Hidrogen (H)</option>
+                                <option value="He">Helium (He)</option>
+                                <option value="Li">Litium (Li)</option>
+                                <option value="C">Karbon (C)</option>
+                                <option value="N">Nitrogen (N)</option>
+                                <option value="O">Oksigen (O)</option>
+                                <option value="Na">Natrium (Na)</option>
+                                <option value="Cl">Klorin (Cl)</option>
+                            </select>
+                        </div>
+                        <div class="atom-visualization" id="atomViz">
+                            <!-- Atom model will be generated here -->
+                        </div>
+                        <div class="atom-info" id="atomInfo">
+                            <!-- Atom information will be displayed here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Periodic Table Interactive -->
+                <div class="interactive-section">
+                    <h3><i class="fas fa-table"></i> Tabel Periodik Interaktif</h3>
+                    <div class="periodic-table-container">
+                        <div class="periodic-table" id="periodicTable">
+                            <!-- Periodic table will be generated by JavaScript -->
+                        </div>
+                        <div class="element-details" id="elementDetails">
+                            <h4>Informasi Unsur</h4>
+                            <p>Klik pada unsur untuk melihat detailnya</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quiz Section for Chapter 1 -->
+                <div class="quiz-section">
+                    <h3><i class="fas fa-question-circle"></i> Kuis Pemahaman</h3>
+                    <div class="quiz-container" id="quiz-bab1">
+                        <!-- Quiz questions will be loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chapter 2: Ikatan Kimia -->
+            <section id="bab2" class="chapter">
+                <div class="chapter-header">
+                    <h1><i class="fas fa-link"></i> Bab 2: Ikatan Kimia</h1>
+                    <div class="chapter-progress">
+                        <div class="progress-track">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <span class="progress-text">0% Selesai</span>
+                    </div>
+                </div>
+
+                <!-- Learning Objectives -->
+                <div class="learning-objectives">
+                    <h3><i class="fas fa-target"></i> Tujuan Pembelajaran</h3>
+                    <ul>
+                        <li>Menjelaskan aturan oktet dan duplet</li>
+                        <li>Menggambar struktur Lewis berbagai senyawa</li>
+                        <li>Menjelaskan pembentukan ikatan ion dan kovalen</li>
+                        <li>Membedakan ikatan kovalen polar dan nonpolar</li>
+                        <li>Mengidentifikasi penyimpangan aturan oktet</li>
+                    </ul>
+                </div>
+
+                <!-- Lewis Structure Builder -->
+                <div class="interactive-section">
+                    <h3><i class="fas fa-project-diagram"></i> Pembuat Struktur Lewis</h3>
+                    <div class="lewis-builder">
+                        <div class="formula-input">
+                            <label for="molecular-formula">Rumus Molekul:</label>
+                            <input type="text" id="molecular-formula" placeholder="Contoh: H2O, NH3, CO2">
+                            <button onclick="generateLewisStructure()">Buat Struktur</button>
+                        </div>
+                        <div class="lewis-display" id="lewisDisplay">
+                            <!-- Lewis structure will be shown here -->
+                        </div>
+                        <div class="lewis-explanation" id="lewisExplanation">
+                            <!-- Step-by-step explanation -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bond Type Simulator -->
+                <div class="interactive-section">
+                    <h3><i class="fas fa-arrows-alt-h"></i> Simulator Jenis Ikatan</h3>
+                    <div class="bond-simulator">
+                        <div class="element-picker">
+                            <div class="element-group">
+                                <label>Unsur 1:</label>
+                                <select id="element1">
+                                    <option value="H">H (Hidrogen)</option>
+                                    <option value="Li">Li (Litium)</option>
+                                    <option value="C">C (Karbon)</option>
+                                    <option value="N">N (Nitrogen)</option>
+                                    <option value="O">O (Oksigen)</option>
+                                    <option value="F">F (Fluorin)</option>
+                                    <option value="Na">Na (Natrium)</option>
+                                    <option value="Cl">Cl (Klorin)</option>
+                                </select>
+                            </div>
+                            <div class="element-group">
+                                <label>Unsur 2:</label>
+                                <select id="element2">
+                                    <option value="H">H (Hidrogen)</option>
+                                    <option value="Li">Li (Litium)</option>
+                                    <option value="C">C (Karbon)</option>
+                                    <option value="N">N (Nitrogen)</option>
+                                    <option value="O">O (Oksigen)</option>
+                                    <option value="F">F (Fluorin)</option>
+                                    <option value="Na">Na (Natrium)</option>
+                                    <option value="Cl">Cl (Klorin)</option>
+                                </select>
+                            </div>
+                            <button onclick="analyzeBond()">Analisis Ikatan</button>
+                        </div>
+                        <div class="bond-result" id="bondResult">
+                            <!-- Bond analysis result -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chapter 3: Bentuk Molekul -->
+            <section id="bab3" class="chapter">
+                <div class="chapter-header">
+                    <h1><i class="fas fa-cubes"></i> Bab 3: Arsitektur Molekul dan Gaya Tariknya</h1>
+                </div>
+
+                <!-- VSEPR Theory Simulator -->
+                <div class="interactive-section">
+                    <h3><i class="fas fa-cube"></i> Simulator Teori VSEPR</h3>
+                    <div class="vsepr-simulator">
+                        <div class="molecular-input">
+                            <label>Formula Molekul:</label>
+                            <select id="vsepr-molecule" onchange="updateVSEPR()">
+                                <option value="BeF2">BeF₂ (Linear)</option>
+                                <option value="BF3">BF₃ (Trigonal Planar)</option>
+                                <option value="CH4">CH₄ (Tetrahedral)</option>
+                                <option value="NH3">NH₃ (Trigonal Pyramid)</option>
+                                <option value="H2O">H₂O (Bent)</option>
+                                <option value="PCl5">PCl₅ (Trigonal Bipyramidal)</option>
+                                <option value="SF6">SF₆ (Octahedral)</option>
+                            </select>
+                        </div>
+                        <div class="vsepr-display">
+                            <div class="molecule-3d" id="molecule3D">
+                                <!-- 3D molecular geometry -->
+                            </div>
+                            <div class="vsepr-info" id="vseprInfo">
+                                <!-- Molecular geometry information -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Polarity Simulator -->
+                <div class="interactive-section">
+                    <h3><i class="fas fa-magnet"></i> Simulator Kepolaran Molekul</h3>
+                    <div class="polarity-simulator">
+                        <div class="molecule-selector">
+                            <label>Pilih Molekul:</label>
+                            <select id="polarity-molecule" onchange="updatePolarity()">
+                                <option value="H2">H₂</option>
+                                <option value="HCl">HCl</option>
+                                <option value="H2O">H₂O</option>
+                                <option value="CO2">CO₂</option>
+                                <option value="NH3">NH₃</option>
+                                <option value="CCl4">CCl₄</option>
+                            </select>
+                        </div>
+                        <div class="polarity-display" id="polarityDisplay">
+                            <!-- Polarity visualization -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chapter 4: Larutan Elektrolit -->
+            <section id="bab4" class="chapter">
+                <div class="chapter-header">
+                    <h1><i class="fas fa-bolt"></i> Bab 4: Daya Hantar Listrik Larutan</h1>
+                </div>
+
+                <!-- Conductivity Tester -->
+                <div class="interactive-section">
+                    <h3><i class="fas fa-flask"></i> Uji Daya Hantar Listrik</h3>
+                    <div class="conductivity-tester">
+                        <div class="solution-selector">
+                            <label>Pilih Larutan:</label>
+                            <select id="solution-type" onchange="testConductivity()">
+                                <option value="NaCl">NaCl (Natrium Klorida)</option>
+                                <option value="HCl">HCl (Asam Klorida)</option>
+                                <option value="CH3COOH">CH₃COOH (Asam Asetat)</option>
+                                <option value="C6H12O6">C₆H₁₂O₆ (Glukosa)</option>
+                                <option value="NH3">NH₃ (Amonia)</option>
+                                <option value="C2H5OH">C₂H₅OH (Etanol)</option>
+                            </select>
+                        </div>
+                        <div class="test-apparatus">
+                            <div class="circuit" id="testCircuit">
+                                <!-- Circuit diagram with bulb and electrodes -->
+                            </div>
+                            <div class="test-result" id="testResult">
+                                <!-- Test results -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chapter 5: Reaksi Redoks -->
+            <section id="bab5" class="chapter">
+                <div class="chapter-header">
+                    <h1><i class="fas fa-exchange-alt"></i> Bab 5: Reaksi Reduksi-Oksidasi</h1>
+                </div>
+
+                <!-- Oxidation Number Calculator -->
+                <div class="interactive-section">
+                    <h3><i class="fas fa-calculator"></i> Kalkulator Bilangan Oksidasi</h3>
+                    <div class="oxidation-calculator">
+                        <div class="compound-input">
+                            <label>Masukkan Senyawa:</label>
+                            <input type="text" id="compound-formula" placeholder="Contoh: KMnO4, H2SO4">
+                            <button onclick="calculateOxidationNumbers()">Hitung</button>
+                        </div>
+                        <div class="oxidation-result" id="oxidationResult">
+                            <!-- Oxidation number results -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Redox Reaction Balancer -->
+                <div class="interactive-section">
+                    <h3><i class="fas fa-balance-scale"></i> Penyeimbang Reaksi Redoks</h3>
+                    <div class="redox-balancer">
+                        <div class="reaction-input">
+                            <label>Reaktan:</label>
+                            <input type="text" id="reactants" placeholder="Contoh: Zn + HCl">
+                            <label>Produk:</label>
+                            <input type="text" id="products" placeholder="Contoh: ZnCl2 + H2">
+                            <button onclick="balanceRedoxReaction()">Seimbangkan</button>
+                        </div>
+                        <div class="balanced-equation" id="balancedEquation">
+                            <!-- Balanced equation -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chapter 6: Stoikiometri -->
+            <section id="bab6" class="chapter">
+                <div class="chapter-header">
+                    <h1><i class="fas fa-calculator"></i> Bab 6: Stoikiometri dan Hukum Dasar Kimia</h1>
+                </div>
+
+                <!-- Stoichiometry Calculator -->
+                <div class="interactive-section">
+                    <h3><i class="fas fa-equals"></i> Kalkulator Stoikiometri</h3>
+                    <div class="stoichiometry-calculator">
+                        <div class="calc-tabs">
+                            <button class="tab-btn active" onclick="showCalcTab('mol-mass')">Mol ⇔ Massa</button>
+                            <button class="tab-btn" onclick="showCalcTab('mol-volume')">Mol ⇔ Volume</button>
+                            <button class="tab-btn" onclick="showCalcTab('empirical')">Rumus Empiris</button>
+                            <button class="tab-btn" onclick="showCalcTab('limiting')">Pereaksi Pembatas</button>
+                        </div>
+                        
+                        <div id="mol-mass" class="calc-content active">
+                            <h4>Konversi Mol dan Massa</h4>
+                            <div class="input-group">
+                                <label>Rumus Kimia:</label>
+                                <input type="text" id="formula-mol-mass" placeholder="Contoh: H2O">
+                            </div>
+                            <div class="input-group">
+                                <label>Massa (gram):</label>
+                                <input type="number" id="mass-input" placeholder="Masukkan massa">
+                            </div>
+                            <button onclick="calculateMolMass()">Hitung</button>
+                            <div class="calc-result" id="molMassResult"></div>
+                        </div>
+                        
+                        <div id="mol-volume" class="calc-content">
+                            <h4>Konversi Mol dan Volume Gas</h4>
+                            <div class="input-group">
+                                <label>Jumlah Mol:</label>
+                                <input type="number" id="mol-input" placeholder="Masukkan mol">
+                            </div>
+                            <div class="input-group">
+                                <label>Kondisi:</label>
+                                <select id="gas-condition">
+                                    <option value="STP">STP (0°C, 1 atm)</option>
+                                    <option value="RTP">RTP (25°C, 1 atm)</option>
+                                </select>
+                            </div>
+                            <button onclick="calculateMolVolume()">Hitung</button>
+                            <div class="calc-result" id="molVolumeResult"></div>
+                        </div>
+                        
+                        <div id="empirical" class="calc-content">
+                            <h4>Penentuan Rumus Empiris</h4>
+                            <div class="elements-input" id="elementsInput">
+                                <div class="element-input">
+                                    <label>Unsur:</label>
+                                    <input type="text" placeholder="C">
+                                    <label>Massa (g):</label>
+                                    <input type="number" placeholder="12.0">
+                                </div>
+                            </div>
+                            <button onclick="addElement()">Tambah Unsur</button>
+                            <button onclick="calculateEmpiricalFormula()">Hitung Rumus</button>
+                            <div class="calc-result" id="empiricalResult"></div>
+                        </div>
+                        
+                        <div id="limiting" class="calc-content">
+                            <h4>Pereaksi Pembatas</h4>
+                            <div class="input-group">
+                                <label>Persamaan Reaksi:</label>
+                                <input type="text" id="reaction-equation" placeholder="Contoh: 2H2 + O2 -> 2H2O">
+                            </div>
+                            <div class="reactants-input" id="reactantsInput">
+                                <!-- Reactant inputs will be generated -->
+                            </div>
+                            <button onclick="calculateLimitingReactant()">Hitung</button>
+                            <div class="calc-result" id="limitingResult"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Global Quiz Section -->
+            <section id="quiz" class="quiz-main">
+                <div class="quiz-header">
+                    <h1><i class="fas fa-graduation-cap"></i> Pusat Evaluasi</h1>
+                    <p>Uji pemahaman Anda dengan berbagai jenis soal</p>
+                </div>
+                
+                <div class="quiz-options">
+                    <div class="quiz-card" onclick="startQuiz('random')">
+                        <i class="fas fa-random"></i>
+                        <h3>Quiz Acak</h3>
+                        <p>Soal campuran dari semua bab</p>
+                        <span class="question-count">25 soal</span>
+                    </div>
+                    
+                    <div class="quiz-card" onclick="startQuiz('chapter')">
+                        <i class="fas fa-book"></i>
+                        <h3>Quiz Per Bab</h3>
+                        <p>Pilih bab yang ingin diuji</p>
+                        <span class="question-count">10 soal</span>
+                    </div>
+                    
+                    <div class="quiz-card" onclick="startQuiz('final')">
+                        <i class="fas fa-trophy"></i>
+                        <h3>Ujian Akhir</h3>
+                        <p>Evaluasi komprehensif</p>
+                        <span class="question-count">50 soal</span>
+                    </div>
+                </div>
+                
+                <div class="quiz-stats">
+                    <h3>Statistik Pembelajaran</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="stat-value" id="completedQuizzes">0</span>
+                            <span class="stat-label">Quiz Selesai</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-percentage"></i>
+                            <span class="stat-value" id="averageScore">0%</span>
+                            <span class="stat-label">Rata-rata Nilai</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-clock"></i>
+                            <span class="stat-value" id="studyTime">0</span>
+                            <span class="stat-label">Jam Belajar</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Simulation Section -->
+            <section id="simulasi" class="simulation-main">
+                <div class="simulation-header">
+                    <h1><i class="fas fa-flask"></i> Laboratorium Virtual</h1>
+                    <p>Eksplorasi konsep kimia melalui simulasi interaktif</p>
+                </div>
+                
+                <div class="simulation-grid">
+                    <div class="sim-card" onclick="openSimulation('atom-builder')">
+                        <div class="sim-icon">
+                            <i class="fas fa-atom"></i>
+                        </div>
+                        <h3>Pembangun Atom</h3>
+                        <p>Bangun atom dengan proton, neutron, dan elektron</p>
+                    </div>
+                    
+                    <div class="sim-card" onclick="openSimulation('bond-formation')">
+                        <div class="sim-icon">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <h3>Pembentukan Ikatan</h3>
+                        <p>Lihat bagaimana atom membentuk ikatan</p>
+                    </div>
+                    
+                    <div class="sim-card" onclick="openSimulation('molecular-shapes')">
+                        <div class="sim-icon">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <h3>Bentuk Molekul 3D</h3>
+                        <p>Eksplorasi geometri molekul dalam 3 dimensi</p>
+                    </div>
+                    
+                    <div class="sim-card" onclick="openSimulation('electrochemistry')">
+                        <div class="sim-icon">
+                            <i class="fas fa-battery-full"></i>
+                        </div>
+                        <h3>Elektrokimia</h3>
+                        <p>Simulasi sel galvanik dan elektrolisis</p>
+                    </div>
+                    
+                    <div class="sim-card" onclick="openSimulation('reaction-rates')">
+                        <div class="sim-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h3>Laju Reaksi</h3>
+                        <p>Pengaruh faktor-faktor terhadap laju reaksi</p>
+                    </div>
+                    
+                    <div class="sim-card" onclick="openSimulation('ph-scale')">
+                        <div class="sim-icon">
+                            <i class="fas fa-vial"></i>
+                        </div>
+                        <h3>Skala pH</h3>
+                        <p>Eksplorasi asam, basa, dan pH</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <!-- Notes Modal -->
+    <div id="notesModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-sticky-note"></i> Catatan Saya</h2>
+                <span class="close" onclick="closeModal('notesModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="notes-container">
+                    <div class="note-input">
+                        <textarea id="noteText" placeholder="Tulis catatan Anda di sini..."></textarea>
+                        <div class="note-actions">
+                            <select id="noteCategory">
+                                <option value="general">Umum</option>
+                                <option value="bab1">Bab 1</option>
+                                <option value="bab2">Bab 2</option>
+                                <option value="bab3">Bab 3</option>
+                                <option value="bab4">Bab 4</option>
+                                <option value="bab5">Bab 5</option>
+                                <option value="bab6">Bab 6</option>
+                            </select>
+                            <button onclick="saveNote()">Simpan</button>
+                        </div>
+                    </div>
+                    <div class="notes-list" id="notesList">
+                        <!-- Saved notes will appear here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Modal -->
+    <div id="quizModal" class="modal">
+        <div class="modal-content quiz-modal-content">
+            <div class="modal-header">
+                <h2 id="quizTitle">Quiz</h2>
+                <div class="quiz-progress">
+                    <span id="questionCounter">1/10</span>
+                    <div class="time-remaining" id="timeRemaining">10:00</div>
+                </div>
+                <span class="close" onclick="closeQuiz()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="quiz-container-modal">
+                    <div class="question-container" id="questionContainer">
+                        <!-- Questions will be loaded here -->
+                    </div>
+                    <div class="quiz-navigation">
+                        <button id="prevBtn" onclick="prevQuestion()" disabled>Sebelumnya</button>
+                        <button id="nextBtn" onclick="nextQuestion()">Selanjutnya</button>
+                        <button id="submitBtn" onclick="submitQuiz()" style="display: none;">Selesai</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Simulation Modal -->
+    <div id="simulationModal" class="modal">
+        <div class="modal-content simulation-modal-content">
+            <div class="modal-header">
+                <h2 id="simTitle">Simulasi</h2>
+                <span class="close" onclick="closeSimulation()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="simulation-container" id="simulationContainer">
+                    <!-- Simulation content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Kimia Interaktif</h3>
+                <p>Platform pembelajaran kimia yang menyenangkan dan interaktif untuk siswa SMA.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Materi</h4>
+                <ul>
+                    <li><a href="#bab1">Struktur Atom</a></li>
+                    <li><a href="#bab2">Ikatan Kimia</a></li>
+                    <li><a href="#bab3">Bentuk Molekul</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="#kalkulator">Kalkulator Kimia</a></li>
+                    <li><a href="#simulasi">Simulasi</a></li>
+                    <li><a href="#quiz">Quiz</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Kimia Interaktif. Dibuat untuk pembelajaran kimia SMA Kelas 10.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
